@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t trackercanada/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true trackercanada/docker-react npm run test -- --coverage
